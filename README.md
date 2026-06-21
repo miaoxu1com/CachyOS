@@ -85,13 +85,14 @@ end
 ### Fcitx5-Rime框架安装
 ```shell
 paru -Sy fcitx5-lotus
+paru -S fcitx5-kde-kwin-settings
 
 # 薄荷输入法
 # 万象配置
 支持声调
 # 雾凇配置
 # weasel.yaml、squirrel.yaml 是鼠须管和小狼毫前端配置，对fcitx5前端不起作用，fcitx5需要另外下载皮肤
-paru -S fcitx5-im
+paru -Sy fcitx5-im
 paru -Sy fcitx5-rime
 kcm-fcitx5
 paru -Sy fcitx5-chinese-addons
@@ -114,8 +115,25 @@ GLFW_IM_MODULE=ibus
 ### 皮肤
 
 ```shell
-#微信皮肤
-paru -S fcitx5-theme-wechat
+# 微信皮肤
+paru -Sy fcitx5-theme-wechat
+
+# 苹果皮肤
+paru -Sy fcitx5-theme-macos12
+paru -Sy otf-apple-pingfang
+paru -Sy otf-apple-pingfang-relaxed
+paru otf-apple-pingfang-ui
+
+# 薄荷同款皮肤
+paru -Sy fcitx5-theme-mint
+
+# Gruvbox皮肤
+https://github.com/ayamir/fcitx5-gruvbox
+
+# Ori皮肤
+paru -Sy fcitx5-skin-ori-git
+
+
 
 ```
 
