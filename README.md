@@ -185,7 +185,7 @@ fish_config theme choose "catppuccin-frappe"
 
 
 ## 终端文件管理
-### yazi特性
+### 特性
 1.	集成各个工具实现在鸭子中直接预览文件内容
 2.	使用快捷键调用集成命令直接编辑文件
 3.	集成搜、编辑、定位、预览与一体
@@ -203,6 +203,10 @@ end
 
 kate .config/yazi/yazi.toml
 ```
+### 配置文件
+**注意**：可配合deepseek生成toml格式的中文注释
+- [https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/yazi-default.toml](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/yazi-default.toml)
+- [https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap-default.toml](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap-default.toml)
 
 
 ## 桌面
