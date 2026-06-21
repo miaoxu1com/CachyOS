@@ -51,6 +51,7 @@ paru -Sy fcitx5-lotus
 
 # 薄荷输入法
 # 万象配置
+支持声调
 # 雾凇配置
 # weasel.yaml、squirrel.yaml 是鼠须管和小狼毫前端配置，对fcitx5前端不起作用，fcitx5需要另外下载皮肤
 paru -S fcitx5-im
