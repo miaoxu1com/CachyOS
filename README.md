@@ -185,6 +185,21 @@ fish_config theme list
 fish_config theme choose "dracula"
 fish_config theme choose "catppuccin-frappe"
 ```
+###	ghostty
+#### 配置文件可视化编辑
+
+- [ghostty](https://ghostty.zerebos.com/app/import-export)
+
+#### 命令
+```shell
+# 查看主题
+ghostty +list-themes
+```
+#### DotFile
+- [1](https://github.com/BruceLanLan/bruceblue-ghostty-config)
+- 
+
+
 #### 配色
 - [draculatheme.com](http://github.com/dracula/dracula-theme)
 
