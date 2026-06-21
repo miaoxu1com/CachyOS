@@ -44,6 +44,43 @@ paru -Sy spark
 
 ## 显卡驱动
 
+## 快速跳转
+```shell
+mkdir -p ~/.config/fish/conf.d/ & kate z.fish
+
+source (lua /home/mx/z.lua/z.lua --init fish once enhanced fzf | psub)
+alias zc='z -c'      # 严格匹配当前路径的子路径
+alias zz='z -i'      # 使用交互式选择模式
+alias zf='z -I'      # 使用 fzf 对多个结果进行选择
+alias zb='z -b'      # 快速回到父目录
+
+
+# 添加cd模糊搜索目录的功能
+kate ~/.config/fish/conf.d/ & kate z.fish
+
+function cd --description "Change directory with fzf + fd"
+    if test (count $argv) -eq 0
+        set -l target_dir (
+            fd --type d --hidden --exclude .git . 2>/dev/null | \
+            fzf --height 40% --reverse --border \
+                --prompt="Select directory: " \
+                --preview="ls -la {} | head -20" \
+                --preview-window=right:50%
+        )
+        
+        if test -n "$target_dir"
+            builtin cd "$target_dir"
+            commandline -f repaint
+        end
+    else
+        builtin cd $argv
+    end
+end
+
+
+```
+
+
 ## 输入法
 ### Fcitx5-Rime框架安装
 ```shell
@@ -76,6 +113,11 @@ GLFW_IM_MODULE=ibus
 ```
 ### 皮肤
 
+```shell
+#微信皮肤
+paru -S fcitx5-theme-wechat
+
+```
 
 ## 浏览器
 
