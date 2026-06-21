@@ -186,6 +186,12 @@ fish_config theme choose "dracula"
 fish_config theme choose "catppuccin-frappe"
 ```
 ###	ghostty
+#### 自带分屏
+1. 多终端并行操作
+2. 内置多种主题自由选择
+3. 定制化
+
+
 #### 配置文件可视化编辑
 
 - [ghostty](https://ghostty.zerebos.com/app/import-export)
@@ -194,6 +200,9 @@ fish_config theme choose "catppuccin-frappe"
 ```shell
 # 查看主题
 ghostty +list-themes
+# 查看按键
+ghostty +list-keybinds --default
+
 ```
 #### DotFile
 - [1](https://github.com/BruceLanLan/bruceblue-ghostty-config)
