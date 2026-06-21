@@ -1,0 +1,2 @@
+- /home/mx/.config/fish/conf.d/z.fish
+- 
