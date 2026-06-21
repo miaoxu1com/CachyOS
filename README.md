@@ -8,6 +8,12 @@
 查看配置中心修改适合自己的配置
 
 ## 源切换工具
+
+### github源配置
+```shell
+git config --global  url.https://gh.jasonzeng.dev/https://github.com/.insteadOf "https://github.com/"
+```
+
 ### ArachLinux源配置
 ```shell
 kate /etc/pacman.conf
