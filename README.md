@@ -145,5 +145,14 @@ kate /home/mx/.cache/paru/clone/brave-origin-nightly-bin/PKGBUILD
 ```
 
 ## 终端
+### fish
+#### 主题
+```shell
+# powerlinepk10 for fish
+tide 
+```
+### zsh
+### 配色
+
 ## 桌面
 kde plasame
