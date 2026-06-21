@@ -2,3 +2,4 @@
 - /etc/pacman.conf
 - /home/mx/.config/yazi/yazi.toml
 - /home/mx/.config/yazi/keymap.toml
+- /home/mx/.config/fish/config.fish
