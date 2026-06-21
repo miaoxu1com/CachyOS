@@ -13,6 +13,7 @@
 kate /etc/pacman.conf
 [archlinuxcn]
 Server = https://mirrors.aliyun.com/archlinuxcn/$arch
+SigLevel = Never
 ```
 ### paru安装
 
@@ -151,8 +152,25 @@ kate /home/mx/.cache/paru/clone/brave-origin-nightly-bin/PKGBUILD
 # powerlinepk10 for fish
 tide 
 ```
+[draculatheme.com](http://github.com/dracula/dracula-theme)
+[catppuccin](https://github.com/catppuccin/fish)
+
+```shell
+status list-files themes
+fish_config theme list
+# 设置主题到配置文件
+~/.config/fish/config.fish
+fish_config theme choose "dracula"
+fish_config theme choose "catppuccin-frappe"
+```
+```shell
+paru -S yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
+
+```
+
 ### zsh
 ### 配色
-
+[draculatheme.com](http://github.com/dracula/dracula-theme)
+[catppuccin](https://github.com/catppuccin/fish)
 ## 桌面
 kde plasame
