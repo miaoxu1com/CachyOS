@@ -79,12 +79,10 @@ GLFW_IM_MODULE=ibus
 ## 浏览器
 
 ```shell
-paru -S brave-origin-nightly
+paru -Sy brave-origin-bin
 
 # 修改加速下载连接
 kate /home/mx/.cache/paru/clone/brave-origin-nightly-bin/PKGBUILD
-
-
 ```
 
 ## 终端
