@@ -12,6 +12,7 @@
 ### github源配置
 ```shell
 git config --global  url.https://gh.jasonzeng.dev/https://github.com/.insteadOf "https://github.com/"
+git config --global protocol.https.allow always
 ```
 
 ### ArachLinux源配置
