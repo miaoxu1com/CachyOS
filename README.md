@@ -133,8 +133,6 @@ https://github.com/ayamir/fcitx5-gruvbox
 # Ori皮肤
 paru -Sy fcitx5-skin-ori-git
 
-
-
 ```
 
 ## 浏览器
