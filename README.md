@@ -152,8 +152,6 @@ kate /home/mx/.cache/paru/clone/brave-origin-nightly-bin/PKGBUILD
 # powerlinepk10 for fish
 tide 
 ```
-[draculatheme.com](http://github.com/dracula/dracula-theme)
-[catppuccin](https://github.com/catppuccin/fish)
 
 ```shell
 status list-files themes
@@ -170,8 +168,8 @@ paru -S yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
 ```
 
 #### 配色
-[draculatheme.com](http://github.com/dracula/dracula-theme)
+- [draculatheme.com](http://github.com/dracula/dracula-theme)
 
-[catppuccin](https://github.com/catppuccin/fish)
+- [catppuccin](https://github.com/catppuccin/fish)
 ## 桌面
 kde plasame
