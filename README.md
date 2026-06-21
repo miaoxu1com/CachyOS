@@ -148,4 +148,4 @@ kate /home/mx/.cache/paru/clone/brave-origin-nightly-bin/PKGBUILD
 
 ## 终端
 ## 桌面
-## 浏览器
+kde plasame
