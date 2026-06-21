@@ -1,0 +1,405 @@
+# =============================================================================
+# Yazi 配置文件 (yazi.toml)
+# 官方 schema 参考: https://yazi-rs.github.io/schemas/yazi.json
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 管理器核心设置 (Manager)
+# 控制文件列表的显示和排序行为
+# -----------------------------------------------------------------------------
+[mgr]
+# 界面布局比例: [父目录树, 文件列表, 预览窗口]
+# 例如 [1, 4, 3] 表示三个部分的宽度比例
+ratio = [1, 4, 3]
+
+# 文件排序方式
+# 可选: "alphabetical"(字母序), "natural"(自然序, 识别数字), "size"(大小), "time"(时间), "extension"(扩展名)
+sort_by = "alphabetical"
+
+# 排序时是否区分大小写
+# false 表示不区分 (a 和 A 视为相同), true 表示区分
+sort_sensitive = false
+
+# 是否反转排序顺序 (升序/降序)
+sort_reverse = false
+
+# 目录是否始终排在文件前面
+# true 表示目录显示在文件上方
+sort_dir_first = true
+
+# 是否对非 ASCII 字符进行转写 (例如中文拼音首字母)
+# 设为 true 可能影响非英文内容的排序
+sort_translit = false
+
+# 当主排序规则 (sort_by) 无法区分时，使用的备用排序规则
+sort_fallback = "alphabetical"
+
+# 文件行显示模式
+# "none" 只显示文件名, "size" 显示大小, "mtime" 显示修改时间
+linemode = "none"
+
+# 是否显示隐藏文件 (以 . 开头的文件)
+show_hidden = true
+
+# 是否显示符号链接的目标路径
+show_symlink = true
+
+# 滚动偏移量 (视口边缘保留的行数)
+# 当光标移动到距离边缘 5 行时开始滚动
+scrolloff = 5
+
+# 允许的鼠标交互事件
+# 支持: "click"(点击), "scroll"(滚轮), "drag"(拖拽)
+mouse_events = ["click", "scroll", "drag"]
+
+# -----------------------------------------------------------------------------
+# 预览设置 (Preview)
+# 控制右侧预览窗口的行为
+# -----------------------------------------------------------------------------
+[preview]
+# 文本换行方式: "no"(不换行), "yes"(换行), "auto"(自动)
+wrap = "no"
+
+# Tab 键的宽度 (空格数)
+tab_size = 2
+
+# 预览最大宽度 (列数)
+max_width = 600
+
+# 预览最大高度 (行数)
+max_height = 900
+
+# 缓存目录路径 (留空则使用系统默认缓存目录)
+# 设置自定义路径可加速预览加载
+cache_dir = ""
+
+# 图片加载延迟 (毫秒)
+# 快速浏览时延迟加载图片，提升流畅度
+image_delay = 30
+
+# 图片缩放算法
+# "triangle"(三角滤波), "nearest"(最近邻), "bilinear"(双线性) 等
+image_filter = "triangle"
+
+# 图片预览质量 (1-100)
+# 越高画质越好，但消耗更多资源
+image_quality = 75
+
+# ueberzug 图片预览的缩放比例
+ueberzug_scale = 1
+
+# ueberzug 图片预览的偏移量 [左, 上, 右, 下]
+ueberzug_offset = [0, 0, 0, 0]
+
+# -----------------------------------------------------------------------------
+# 文件打开器 (Opener)
+# 定义不同操作 (编辑、播放、打开等) 调用的程序
+# -----------------------------------------------------------------------------
+[opener]
+# 编辑器配置
+edit = [
+    # Linux/macOS: 使用系统环境变量 EDITOR 指定的编辑器，阻塞等待编辑完成
+    { run = "${EDITOR:-kate} %s", desc = "$EDITOR", for = "linux", block = true },
+    # Windows: 使用 VSCode，不阻塞 (orphan 表示独立进程)
+    { run = "code %s", desc = "code", for = "windows", orphan = true },
+    # Windows: 使用 VSCode，阻塞等待编辑完成
+    { run = "code -w %s", desc = "code (block)", for = "windows", block = true },
+]
+
+# 播放器配置 (针对音视频文件)
+play = [
+    # Linux: 使用 xdg-open 打开，不阻塞
+    { run = "xdg-open %s", desc = "Play", for = "linux", orphan = true },
+    # macOS: 使用 open 命令
+    { run = "open %s", desc = "Play", for = "macos" },
+    # Windows: 使用默认程序打开
+    { run = 'start "" %s', desc = "Play", for = "windows", orphan = true },
+    # Android (Termux): 使用 termux-open
+    { run = "termux-open %s", desc = "Play", for = "android" },
+    # Unix: 使用 mediainfo 显示媒体信息，阻塞等待用户按 Enter
+    { run = "mediainfo %s; echo 'Press enter to exit'; read _", block = true, desc = "Show media info", for = "unix" },
+    # Windows: 使用 mediainfo 显示媒体信息并暂停
+    { run = "mediainfo %s & pause", block = true, desc = "Show media info", for = "windows" },
+]
+
+# 通用打开配置
+open = [
+    { run = "xdg-open %s", desc = "Open", for = "linux" },
+    { run = "open %s", desc = "Open", for = "macos" },
+    { run = 'start "" %s', desc = "Open", for = "windows", orphan = true },
+    { run = "termux-open %s", desc = "Open", for = "android" },
+]
+
+# 在文件管理器中显示/定位文件
+reveal = [
+    # Linux: 打开包含该文件的目录
+    { run = "xdg-open %d", desc = "Reveal", for = "linux" },
+    # macOS: 在 Finder 中高亮该文件
+    { run = "open -R %s", desc = "Reveal", for = "macos" },
+    # Windows: 在资源管理器中选中该文件
+    { run = "explorer /select,%s", desc = "Reveal", for = "windows", orphan = true },
+    # Android: 打开文件所在目录
+    { run = "termux-open %d", desc = "Reveal", for = "android" },
+    # Unix: 显示 EXIF 元数据 (需要安装 exiftool)
+    { run = "clear; exiftool %s; echo 'Press enter to exit'; read _", desc = "Show EXIF", for = "unix", block = true },
+]
+
+# 解压配置
+extract = [
+    # 调用 Yazi 内置的压缩包预览功能，列出压缩包内容
+    { run = "ya pub extract --list %s", desc = "Extract here" },
+]
+
+# 下载配置 (用于 VFS 虚拟文件系统)
+download = [
+    { run = "ya emit download --open %S", desc = "Download and open" },
+    { run = "ya emit download %S", desc = "Download" },
+]
+
+# -----------------------------------------------------------------------------
+# 打开规则 (Open Rules)
+# 根据文件 URL 或 MIME 类型决定使用哪些 Opener
+# -----------------------------------------------------------------------------
+[open]
+rules = [
+    # 文件夹: 可以使用编辑、打开、定位
+    { url = "*/", use = ["edit", "open", "reveal"] },
+    # 文本文件: 使用编辑器打开，或定位
+    { mime = "text/*", use = ["edit", "reveal"] },
+    # 图片: 打开或定位
+    { mime = "image/*", use = ["open", "reveal"] },
+    # 音视频: 播放或定位
+    { mime = "{audio,video}/*", use = ["play", "reveal"] },
+    # 代码文件: 用编辑器打开或定位
+    { mime = "application/{json,ndjson,javascript,wine-extension-ini}", use = ["edit", "reveal"] },
+    # 压缩包: 解压或定位
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["extract", "reveal"] },
+    # 空文件: 编辑或定位
+    { mime = "inode/empty", use = ["edit", "reveal"] },
+    # 虚拟文件系统: 下载
+    { mime = "vfs/{absent,stale}", use = "download" },
+    # 兜底规则: 所有其他文件用默认打开或定位
+    { url = "*", use = ["open", "reveal"] },
+]
+
+# -----------------------------------------------------------------------------
+# 任务系统 (Tasks)
+# 控制并发、缓存和资源限制
+# -----------------------------------------------------------------------------
+[tasks]
+# 文件操作 (如复制、移动) 的并发工作线程数
+file_workers = 3
+
+# 插件执行的并发线程数
+plugin_workers = 5
+
+# 网络获取 (如远程文件) 的并发线程数
+fetch_workers = 5
+
+# 预加载 (如缩略图生成) 的并发线程数
+preload_workers = 2
+
+# 后台处理任务的并发线程数
+process_workers = 5
+
+# 失败任务的重试次数
+bizarre_retry = 3
+
+# 图片缓存分配的内存上限 (字节)
+# 536870912 = 512 MB
+image_alloc = 536870912
+
+# 图片缓存的尺寸上限 [宽度, 高度]
+image_bound = [10000, 10000]
+
+# 是否禁止预加载 (设为 true 可节省资源)
+suppress_preload = false
+
+# -----------------------------------------------------------------------------
+# 插件系统 (Plugin)
+# 定义各种钩子的插件实现
+# -----------------------------------------------------------------------------
+[plugin]
+# ----- 数据获取器 (Fetchers) -----
+# 获取文件元数据/内容
+fetchers = [
+    # 所有文件: 通过 MIME 类型获取
+    { url = "*/", run = "mime.dir", prio = "high", group = "mime" },
+    # 本地文件: 本地 MIME 检测
+    { url = "local://*", run = "mime.local", prio = "high", group = "mime" },
+    # 远程文件: 远程 MIME 检测
+    { url = "remote://*", run = "mime.remote", prio = "high", group = "mime" },
+]
+
+# ----- 文件识别器 (Spotters) -----
+# 确定文件的类型/特征
+spotters = [
+    # 多文件: 识别为 multi 类型
+    { mime = "multi/*", run = "multi" },
+    # 文件夹: 识别为 folder 类型
+    { url = "*/", run = "folder" },
+    # 代码文件: 识别为 code 类型
+    { mime = "text/*", run = "code" },
+    { mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
+    # 特殊图片格式: 使用 ImageMagick 识别
+    { mime = "image/{avif,hei?,jxl}", run = "magick" },
+    # SVG: 使用 SVG 解析器
+    { mime = "image/svg+xml", run = "svg" },
+    # 普通图片: 使用内置图片识别
+    { mime = "image/*", run = "image" },
+    # 视频: 使用视频识别
+    { mime = "video/*", run = "video" },
+    # 虚拟文件系统
+    { mime = "vfs/*", run = "vfs" },
+    # 错误/空类型
+    { mime = "null/*", run = "null" },
+    # 兜底: 使用文件系统信息
+    { url = "*", run = "file" },
+]
+
+# ----- 预加载器 (Preloaders) -----
+# 在预览前加载内容 (生成缩略图等)
+preloaders = [
+    # 特殊图片格式: 使用 ImageMagick 预加载
+    { mime = "image/{avif,hei?,jxl}", run = "magick" },
+    { mime = "image/svg+xml", run = "svg" },
+    { mime = "image/*", run = "image" },
+    # 视频: 提取封面帧
+    { mime = "video/*", run = "video" },
+    # PDF: 生成预览
+    { mime = "application/pdf", run = "pdf" },
+    # 字体: 预览字体样式
+    { mime = "font/*", run = "font" },
+    { mime = "application/ms-opentype", run = "font" },
+]
+
+# ----- 预览器 (Previewers) -----
+# 实际生成预览内容
+previewers = [
+    # 文件夹: 显示目录结构预览
+    { url = "*/", run = "folder" },
+    # 代码: 语法高亮预览
+    { mime = "text/*", run = "code" },
+    { mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
+    # JSON: 格式化预览
+    { mime = "application/{json,ndjson}", run = "json" },
+    # 特殊图片: 使用 ImageMagick 预览
+    { mime = "image/{avif,hei?,jxl}", run = "magick" },
+    { mime = "image/svg+xml", run = "svg" },
+    { mime = "image/*", run = "image" },
+    # 视频: 视频预览
+    { mime = "video/*", run = "video" },
+    # PDF: PDF 预览
+    { mime = "application/pdf", run = "pdf" },
+    # 压缩包: 列出压缩包内容
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
+    { mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}", run = "archive" },
+    { url = "*.{AppImage,appimage}", run = "archive" },
+    # 磁盘镜像: 预览镜像内容
+    { mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
+    { mime = "application/virtualbox-{vhd,vhdx}", run = "archive" },
+    { url = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
+    # 字体: 字体预览
+    { mime = "font/*", run = "font" },
+    { mime = "application/ms-opentype", run = "font" },
+    # 空文件
+    { mime = "inode/empty", run = "empty" },
+    # 虚拟文件系统
+    { mime = "vfs/*", run = "vfs" },
+    # 错误类型
+    { mime = "null/*", run = "null" },
+    # 兜底: 使用 file 命令识别并显示
+    { url = "*", run = "file" },
+]
+
+# -----------------------------------------------------------------------------
+# 输入框设置 (Input)
+# 控制各种输入框的光标行为
+# -----------------------------------------------------------------------------
+[input]
+# 光标是否闪烁
+cursor_blink = false
+
+# ----- cd 命令输入框 -----
+cd_title = "Change directory:"          # 标题
+cd_origin = "top-center"                # 弹出位置 (如 top-center, hovered)
+cd_offset = [0, 2, 50, 3]               # 偏移: [左, 上, 宽, 高]
+
+# ----- create 创建文件/目录 -----
+# 两个标题: [创建文件, 创建目录]
+create_title = ["Create:", "Create (dir):"]
+create_origin = "top-center"
+create_offset = [0, 2, 50, 3]
+
+# ----- rename 重命名 -----
+rename_title = "Rename:"
+rename_origin = "hovered"               # 在当前悬停的文件旁弹出
+rename_offset = [0, 1, 50, 3]
+
+# ----- filter 过滤 -----
+filter_title = "Filter:"
+filter_origin = "top-center"
+filter_offset = [0, 2, 50, 3]
+
+# ----- find 查找 (下一个/上一个) -----
+find_title = ["Find next:", "Find previous:"]
+find_origin = "top-center"
+find_offset = [0, 2, 50, 3]
+
+# ----- search 搜索 (使用外部工具) -----
+# {n} 会被替换为搜索工具名称
+search_title = "Search via {n}:"
+search_origin = "top-center"
+search_offset = [0, 2, 50, 3]
+
+# ----- shell 执行命令 -----
+shell_title = ["Shell:", "Shell (block):"]
+shell_origin = "top-center"
+shell_offset = [0, 2, 50, 3]
+
+# -----------------------------------------------------------------------------
+# 确认对话框设置 (Confirm)
+# 控制危险操作的确认弹窗
+# -----------------------------------------------------------------------------
+[confirm]
+# 移到回收站
+trash_title = "Trash {n} selected file{s}?"
+trash_origin = "center"                 # 屏幕中央
+trash_offset = [0, 0, 70, 20]
+
+# 永久删除
+delete_title = "Permanently delete {n} selected file{s}?"
+delete_origin = "center"
+delete_offset = [0, 0, 70, 20]
+
+# 覆盖文件
+overwrite_title = "Overwrite file?"
+overwrite_body = "Will overwrite the following file:"
+overwrite_origin = "center"
+overwrite_offset = [0, 0, 50, 15]
+
+# 退出 (有未完成任务时)
+quit_title = "Quit?"
+quit_body = "There are unfinished tasks, quit anyway?\n(Open task manager with default key 'w')"
+quit_origin = "center"
+quit_offset = [0, 0, 50, 15]
+
+# -----------------------------------------------------------------------------
+# 选择器设置 (Pick)
+# 用于选择打开方式的交互框
+# -----------------------------------------------------------------------------
+[pick]
+# "打开方式" 选择框
+open_title = "Open with:"
+open_origin = "hovered"                 # 在悬停文件旁弹出
+open_offset = [0, 1, 50, 7]
+
+# -----------------------------------------------------------------------------
+# "哪个" 命令提示框 (Which)
+# 显示快捷键帮助时使用的排序规则
+# -----------------------------------------------------------------------------
+[which]
+sort_by = "none"                        # 不排序，按注册顺序显示
+sort_sensitive = false
+sort_reverse = false
+sort_translit = false
