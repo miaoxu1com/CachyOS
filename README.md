@@ -46,6 +46,7 @@ paru -Sy spark
 ## 显卡驱动
 
 ## 快速跳转
+### z.lua  废弃
 ```shell
 mkdir -p ~/.config/fish/conf.d/ & kate z.fish
 
@@ -55,7 +56,9 @@ alias zz='z -i'      # 使用交互式选择模式
 alias zf='z -I'      # 使用 fzf 对多个结果进行选择
 alias zb='z -b'      # 快速回到父目录
 
-
+```
+### cd、fzf、fd组合
+```shell
 # 添加cd模糊搜索目录的功能
 kate ~/.config/fish/conf.d/ & kate z.fish
 
@@ -77,11 +80,16 @@ function cd --description "Change directory with fzf + fd"
         builtin cd $argv
     end
 end
-
-
 ```
 
+### zoxide
+```shell
+# 初始化
+zoxide init fish | source
+# 导入atuin、autojump、fasd、z、z.lua、zsh-z的数据
+zoxide import --from z /home/mx/.zlua --merge
 
+```
 ## 输入法
 ### Fcitx5-Rime框架安装
 ```shell
@@ -152,14 +160,38 @@ kate /home/mx/.cache/paru/clone/brave-origin-nightly-bin/PKGBUILD
 ```
 
 ## 终端
-### fish、zsh
+### fish
 #### 主题
 ```shell
 # powerlinepk10 for fish
 tide
 # 添加到配置文件
 /home/mx/.config/fish/conf.d/z.fish
+```
 
+```shell
+# fish主题配置
+status list-files themes
+fish_config theme list
+# 设置主题到配置文件
+~/.config/fish/config.fish
+fish_config theme choose "dracula"
+fish_config theme choose "catppuccin-frappe"
+```
+#### 配色
+- [draculatheme.com](http://github.com/dracula/dracula-theme)
+
+- [catppuccin](https://github.com/catppuccin/fish)
+
+
+## 终端文件管理
+### yazi特性
+1.	集成各个工具实现在鸭子中直接预览文件内容
+2.	使用快捷键调用集成命令直接编辑文件
+3.	集成搜、编辑、定位、预览与一体
+```shell
+paru -S yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
+# q退出yazi时 终端自动切换到 退出时的目录
 function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
 	command yazi $argv --cwd-file="$tmp"
@@ -168,25 +200,10 @@ function y
 	end
 	command rm -f -- "$tmp"
 end
+
+kate .config/yazi/yazi.toml
 ```
 
-```shell
-status list-files themes
-fish_config theme list
-# 设置主题到配置文件
-~/.config/fish/config.fish
-fish_config theme choose "dracula"
-fish_config theme choose "catppuccin-frappe"
-```
 
-```shell
-paru -S yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
-
-```
-
-#### 配色
-- [draculatheme.com](http://github.com/dracula/dracula-theme)
-
-- [catppuccin](https://github.com/catppuccin/fish)
 ## 桌面
 kde plasame
