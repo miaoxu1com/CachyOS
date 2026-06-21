@@ -150,7 +150,18 @@ kate /home/mx/.cache/paru/clone/brave-origin-nightly-bin/PKGBUILD
 #### 主题
 ```shell
 # powerlinepk10 for fish
-tide 
+tide
+# 添加到配置文件
+/home/mx/.config/fish/conf.d/z.fish
+
+function y
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+	command yazi $argv --cwd-file="$tmp"
+	if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
+		builtin cd -- "$cwd"
+	end
+	command rm -f -- "$tmp"
+end
 ```
 
 ```shell
