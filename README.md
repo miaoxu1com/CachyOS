@@ -146,7 +146,7 @@ kate /home/mx/.cache/paru/clone/brave-origin-nightly-bin/PKGBUILD
 ```
 
 ## 终端
-### fish
+### fish、zsh
 #### 主题
 ```shell
 # powerlinepk10 for fish
@@ -163,13 +163,13 @@ fish_config theme list
 fish_config theme choose "dracula"
 fish_config theme choose "catppuccin-frappe"
 ```
+
 ```shell
 paru -S yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
 
 ```
 
-### zsh
-### 配色
+#### 配色
 [draculatheme.com](http://github.com/dracula/dracula-theme)
 [catppuccin](https://github.com/catppuccin/fish)
 ## 桌面
