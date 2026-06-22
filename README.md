@@ -144,6 +144,17 @@ zoxide init fish | source
 zoxide import --from z /home/mx/.zlua --merge
 
 ```
+
+## 电源方案
+```shell
+# 安装
+sudo pacman -S power-profiles-daemon
+# 启动
+sudo systemctl unmask power-profiles-daemon
+sudo systemctl enable --now power-profiles-daemon
+
+```
+
 ## 输入法
 ### Fcitx5-Rime框架安装
 ```shell
@@ -290,7 +301,7 @@ ghostty +list-keybinds --default
 
 ## kde系统设置
 ### 字体
-- 设置系统默认字体
+- 设置系统默认字体Maple Mono
 - 抗锯齿
 
 ### 快速设置
