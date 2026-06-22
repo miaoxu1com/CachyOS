@@ -162,6 +162,9 @@ paru -Sy fcitx5-chinese-addons
 paru -Sy fcitx5-config-qt
 
 #输入和输出 --> 键盘 --> 虚拟键盘 里激活 Fcitx5 Wayland 启动器
+# 防止漏字，在 [Formats] 里面添加一行
+kate ~/.config/plasma-localerc
+LC_CTYPE=en_US.UTF-8
 
 # 配置环境变量
 kate ~/.pam_environment
@@ -218,6 +221,13 @@ kate /home/mx/.cache/paru/clone/brave-origin-nightly-bin/PKGBUILD
 ## 终端
 ### fish
 #### 主题
+
+```shell
+# 提示符
+Fish + Starship
+# fish + Tide
+```
+
 ```shell
 # powerlinepk10 for fish
 tide
