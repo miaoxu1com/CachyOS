@@ -161,6 +161,8 @@ kcm-fcitx5
 paru -Sy fcitx5-chinese-addons
 paru -Sy fcitx5-config-qt
 
+#输入和输出 --> 键盘 --> 虚拟键盘 里激活 Fcitx5 Wayland 启动器
+
 # 配置环境变量
 kate ~/.pam_environment
 
