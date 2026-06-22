@@ -51,6 +51,7 @@ paru -Sy spark
 
 
 ## 显卡驱动
+[驱动安装](./nvidia.md)
 
 ## 快速跳转
 ### z.lua  废弃
