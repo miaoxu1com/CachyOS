@@ -329,6 +329,32 @@ ghostty +list-keybinds --default
 ### 文件关联
 - 扩展名关联设置
 
+### 窗口管理器
+#### niri+Noctalia Shell+kde安装
+```shell
+# 1.qt5-wayland 比如brave-origin浏览器，QT软件在Wayland协议下需要，否则无法启动
+# 2.qt6-wayland QT软件在Wayland协议下需要，否则无法启动
+
+paru -S --needed niri noctalia-shell xwayland-satellite polkit-kde-agent cliphist brightnessctl pamixer qt5-wayland qt6-wayland 
+
+```
+**注意事项**
+1. kate需要niri的window-rule规则，否则默认是全屏模式，noctalia-shell的关机电源的浮动面板无法显示
+2. 解决niri+kde混合桌面环境，托盘和app启动器中图标显示色块问题，无法正常显示
+```shell
+cd /usr/share/wayland-sessions/
+touch niri_kde.desktop
+kate niri_kde.desktop
+# 添加
+[Desktop Entry]
+Name=Niri + KDE
+Comment=Wayland session with niri compositor and KDE Plasma
+Exec=env KDE_SESSION_VERSION=6 KDE_FULL_SESSION=true niri
+Type=Application
+```
+3. konsole不要设置记住窗口大小，否则无法按照niri配置的0.5宽度自动分屏
+4. noctalia-shell壁纸必须要放在配置的壁纸目录，放在其他目录选择了也无法显示
+5. noctalia-shell配置的透明度显示，需要重启否则配置不生效
 
 ## 终端文件管理
 ### 特性
