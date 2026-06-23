@@ -354,8 +354,9 @@ Type=Application
 ```
 3. konsole不要设置记住窗口大小，否则无法按照niri配置的0.5宽度自动分屏
 4. noctalia-shell壁纸必须要放在配置的壁纸目录，放在其他目录选择了也无法显示
-5. noctalia-shell配置的透明度显示，需要重启否则配置不生效
-6. noctalia-shell的app启动器需要在设置修改最上层显示，否则会被置顶程序遮挡
+5. noctalia-shell设置Dock栏->背景透明度，需要重启否则配置不生效
+6. noctalia-shell设置启动器->屏最上方显示，否则会被置顶程序遮挡
+7. noctalia-shell设置地区->天气搜索位置
 
 ## 终端文件管理
 ### 特性
