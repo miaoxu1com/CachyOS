@@ -363,6 +363,10 @@ drwxr-xr-x   - mx 23 6月  01:17  plugins
 .rw-r--r-- 460 mx 25 6月  01:25  colors.json
 .rw-r--r-- 227 mx 23 6月  01:21  plugins.json
 .rw-r--r-- 22k mx 24 6月  23:42  settings.json
+
+# 亮度配置，修改settings.json，如下
+"enableDdcSupport": true
+
 ```
 
 ```
