@@ -351,7 +351,7 @@ ghostty +list-keybinds --default
 # 1.qt5-wayland 比如brave-origin浏览器，QT软件在Wayland协议下需要，否则无法启动
 # 2.qt6-wayland QT软件在Wayland协议下需要，否则无法启动
 
-paru -S --needed niri noctalia-shell xwayland-satellite polkit-kde-agent cliphist brightnessctl pamixer qt5-wayland qt6-wayland 
+paru -S --needed niri xcb-util-cursor tree noctalia-shell xwayland-satellite polkit-kde-agent cliphist brightnessctl pamixer qt5-wayland qt6-wayland 
 
 ```
 **注意事项**
