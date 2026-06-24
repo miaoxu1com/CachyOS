@@ -1,0 +1,1 @@
+- [Niri 安装与配置](https://www.sakimidare.top/posts/niri-manual/)
