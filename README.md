@@ -368,9 +368,8 @@ drwxr-xr-x   - mx 23 6月  01:17  plugins
 "enableDdcSupport": true
 
 ```
-
-```
 **注意事项**
+```
 1. kate需要niri的window-rule规则，否则默认是全屏模式，noctalia-shell的关机电源的浮动面板无法显示
 2. 解决niri+kde混合桌面环境，托盘和app启动器中图标显示色块问题，无法正常显示
 ```shell
