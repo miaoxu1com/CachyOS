@@ -353,6 +353,18 @@ ghostty +list-keybinds --default
 
 paru -S --needed niri xcb-util-cursor tree noctalia-shell xwayland-satellite polkit-kde-agent cliphist brightnessctl pamixer qt5-wayland qt6-wayland 
 
+#### 配置文件
+```shell
+/home/mx/.config/noctalia
+cd /home/mx/.config/noctalia
+
+drwxr-xr-x   - mx 23 6月  01:17  colorschemes
+drwxr-xr-x   - mx 23 6月  01:17  plugins
+.rw-r--r-- 460 mx 25 6月  01:25  colors.json
+.rw-r--r-- 227 mx 23 6月  01:21  plugins.json
+.rw-r--r-- 22k mx 24 6月  23:42  settings.json
+```
+
 ```
 **注意事项**
 1. kate需要niri的window-rule规则，否则默认是全屏模式，noctalia-shell的关机电源的浮动面板无法显示
