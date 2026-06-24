@@ -95,6 +95,11 @@ paru -Sy discover
 paru -Sy spark
 ```
 
+### 多系统引导修复
+```shell
+# 重新生成引导会检测其他可用efi分区，生成新的引导项
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
 
 ## 显卡驱动
 [驱动安装](./nvidia.md)
