@@ -100,6 +100,17 @@ paru -Sy spark
 # 重新生成引导会检测其他可用efi分区，生成新的引导项
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
+### Plasma登录管理器开机打开数字键盘
+- [开机打开数字键盘](https://wiki.archlinuxcn.org/wiki/%E5%90%AF%E5%8A%A8%E6%97%B6%E6%89%93%E5%BC%80%E6%95%B0%E5%AD%97%E9%94%81%E5%AE%9A%E9%94%AE#Plasma_%E7%99%BB%E5%BD%95%E7%AE%A1%E7%90%86%E5%99%A8)
+
+```shell
+# 编辑 /var/lib/plasmalogin/.config/kdedefaults/kcminputrc
+/var/lib/plasmalogin/.config/kdedefaults/kcminputrc
+[Keyboard]
+NumLock=0
+```
+
+
 
 ## 显卡驱动
 [驱动安装](./nvidia.md)
