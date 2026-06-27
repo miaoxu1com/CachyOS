@@ -172,9 +172,14 @@ sudo systemctl enable --now power-profiles-daemon
 ```
 
 ## 输入法
+
+### 应用无法输出中文
+[无法输入中文](https://forum.archlinuxcn.org/t/topic/14626/3)
+
 ### Fcitx5-Rime框架安装
 ```shell
-paru -Sy fcitx5-lotus
+# gtk3解决gtk3应用中文输入法调用问题
+paru -Sy fcitx5-lotus fcitx5-frontend-gtk3
 paru -S fcitx5-kde-kwin-settings
 
 # 薄荷输入法
