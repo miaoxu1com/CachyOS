@@ -53,6 +53,7 @@
 
 查看配置中心修改适合自己的配置
 
+
 ## 源切换工具
 
 ### github源配置
@@ -324,6 +325,12 @@ ghostty +list-keybinds --default
 - [catppuccin](https://github.com/catppuccin/fish)
 
 ## kde系统设置
+## 开发环境配置
+### python
+- 安装完系统后没有pip命令,用以下命令安装
+```shell
+paru -Sy python-pip
+```
 ### 字体
 - 设置系统默认字体Maple Mono
 - 抗锯齿
