@@ -173,6 +173,9 @@ sudo systemctl enable --now power-profiles-daemon
 
 ## 输入法
 
+### kde桌面托盘图标
+- 输入法托盘图标可以常显在状态栏，鼠标点击方便切换
+
 ### 应用无法输出中文
 [无法输入中文](https://forum.archlinuxcn.org/t/topic/14626/3)
 
